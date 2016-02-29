@@ -66,12 +66,12 @@ public final class OperacionesBaseDatos {
         return  db.rawQuery(sql, null);
     }
 
-    public String insertarMitarbeieter(Mitarbeiter mitarbeiter) {
-        ContentValues valores = new ContentValues();
-        // Generar Pk??
-        valores.put(Mitarbeiter.ID, mitarbeiter.idMitarbeiter);
-        valores.put(Mitarbeiter.NAME, mitarbeiter.);
-    }
+//    public String insertarMitarbeieter(Mitarbeiter mitarbeiter) {
+//        ContentValues valores = new ContentValues();
+//        // Generar Pk??
+//        valores.put(Mitarbeiter.ID, mitarbeiter.idMitarbeiter);
+//        valores.put(Mitarbeiter.NAME, mitarbeiter.);
+//    }
 
 
 }

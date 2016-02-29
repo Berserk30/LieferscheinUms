@@ -88,8 +88,8 @@ public class GestionUmsDbHelper extends SQLiteOpenHelper {
 
         //Creamos tabla Mitarbeiter en un estilo distinto con String.format y sustituciones de "%s"
         db.execSQL(String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY," +
-                        "%s TEXT NOT NULL,%s TEXT NOT NULL,%s TEXT NOT NULL)",
-                Tablas.MITARBEITER, BaseColumns._ID,
+                        "%s TEXT NOT NULL,%s TEXT NOT NULL)",
+                Tablas.MITARBEITER,
                 Mitarbeiter.ID, Mitarbeiter.NAME, Mitarbeiter.PRÄFIX));
     }
 
