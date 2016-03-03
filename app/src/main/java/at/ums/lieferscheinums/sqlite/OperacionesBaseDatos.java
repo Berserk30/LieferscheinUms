@@ -52,6 +52,23 @@ public final class OperacionesBaseDatos {
     }
 
 
+    public String insertarLieferschein(Lieferschein lieferschein) {
+        SQLiteDatabase db = baseDatos.getWritableDatabase();
+
+//        // Generar Pk
+//        String idCabeceraPedido = Lieferschein.generarIdCabeceraPedido();
+
+        ContentValues valores = new ContentValues();
+        valores.put(Lieferschein., lieferschein.ID);
+        valores.put(Lieferschein.DATUM, lieferschein.DATUM);
+        valores.put(Lieferschein., pedido.idCliente);
+        valores.put(CabecerasPedido.ID_FORMA_PAGO, pedido.idFormaPago);
+
+        // Insertar cabecera
+        db.insertOrThrow(Tablas.CABECERA_PEDIDO, null, valores);
+
+        return idCabeceraPedido;
+    }
 
 
 
