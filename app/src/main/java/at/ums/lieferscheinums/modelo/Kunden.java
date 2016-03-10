@@ -14,14 +14,14 @@ public class Kunden {
     public String email;
 
     public Kunden(String idKunden, String nameKunde, String adresse, String ort,
-                  String plz, String telefon, String email){
-        this.idKunden = idKunden;
-        this.nameKunde = nameKunde;
-        this.adresse = adresse;
-        this.ort = ort;
-        this.plz = plz;
-        this.telefon = telefon;
-        this.email = email;
+                String plz, String telefon, String email){
+            this.idKunden = idKunden;
+            this.nameKunde = nameKunde;
+            this.adresse = adresse;
+            this.ort = ort;
+            this.plz = plz;
+            this.telefon = telefon;
+            this.email = email;
     }
 
 }

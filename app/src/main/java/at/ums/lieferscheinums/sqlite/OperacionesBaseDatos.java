@@ -55,21 +55,58 @@ public final class OperacionesBaseDatos {
     public String insertarLieferschein(Lieferschein lieferschein) {
         SQLiteDatabase db = baseDatos.getWritableDatabase();
 
-//        // Generar Pk
-//        String idCabeceraPedido = Lieferschein.generarIdCabeceraPedido();
-
         ContentValues valores = new ContentValues();
-        valores.put(Lieferschein., lieferschein.ID);
-        valores.put(Lieferschein.DATUM, lieferschein.DATUM);
-        valores.put(Lieferschein., pedido.idCliente);
-        valores.put(CabecerasPedido.ID_FORMA_PAGO, pedido.idFormaPago);
 
-        // Insertar cabecera
-        db.insertOrThrow(Tablas.CABECERA_PEDIDO, null, valores);
+        valores.put(ContratoGestionUmsDb.Lieferschein.ID, lieferschein.idLieferschein);
+        valores.put(ContratoGestionUmsDb.Lieferschein.DATUM, lieferschein.datum);
+        valores.put(ContratoGestionUmsDb.Lieferschein.ID_MITARBEITER, lieferschein.idMitarbeiter);
+        valores.put(ContratoGestionUmsDb.Lieferschein.ID_KUNDE, lieferschein.idKunde);
+        valores.put(ContratoGestionUmsDb.Lieferschein.ARTIKEL, lieferschein.artikel);
+        valores.put(ContratoGestionUmsDb.Lieferschein.MENGE, lieferschein.menge);
+        valores.put(ContratoGestionUmsDb.Lieferschein.EH, lieferschein.eh);
+        valores.put(ContratoGestionUmsDb.Lieferschein.PHOTO, lieferschein.photo);
+        valores.put(ContratoGestionUmsDb.Lieferschein.SIGNATURE, lieferschein.signature);
 
-        return idCabeceraPedido;
+        db.insertOrThrow(Tablas.LIEFERSCHEIN, null, valores);
+
+        return lieferschein.idLieferschein;
     }
 
+    public boolean actualizarLieferschein(Lieferschein lieferscheinNuevo){
+        SQLiteDatabase db = baseDatos.getWritableDatabase();
+
+        ContentValues valores = new ContentValues();
+
+        valores.put(ContratoGestionUmsDb.Lieferschein.DATUM, lieferscheinNuevo.datum);
+        valores.put(ContratoGestionUmsDb.Lieferschein.ID_MITARBEITER, lieferscheinNuevo.idMitarbeiter);
+        valores.put(ContratoGestionUmsDb.Lieferschein.ID_KUNDE, lieferscheinNuevo.idKunde);
+        valores.put(ContratoGestionUmsDb.Lieferschein.ARTIKEL, lieferscheinNuevo.artikel);
+        valores.put(ContratoGestionUmsDb.Lieferschein.MENGE, lieferscheinNuevo.menge);
+        valores.put(ContratoGestionUmsDb.Lieferschein.EH, lieferscheinNuevo.eh);
+        valores.put(ContratoGestionUmsDb.Lieferschein.PHOTO, lieferscheinNuevo.photo);
+        valores.put(ContratoGestionUmsDb.Lieferschein.SIGNATURE, lieferscheinNuevo.signature);
+
+        String whereClause = ContratoGestionUmsDb.Lieferschein.ID + "=?";
+        // La linea anterior tb. se puede escribir como sigue
+        // String whereClausule = String.format("%s=?", ContratoGestionUmsDb.Lieferschein.ID);
+        String[] whereArgs = {lieferscheinNuevo.idLieferschein};
+
+        int resultado = db.update(Tablas.LIEFERSCHEIN, valores, whereClause, whereArgs);
+
+        return resultado > 0;
+    }
+
+
+    public boolean eliminarLieferschein(String idLieferschein) {
+        SQLiteDatabase db = baseDatos.getWritableDatabase();
+
+        String whereClause = ContratoGestionUmsDb.Lieferschein.ID + "=?";
+        String whereArgs = {idLieferschein};
+
+        int resultado = db.delete(Tablas.LIEFERSCHEIN, whereClause, whereArgs);
+
+        return resultado > 0;
+    }
 
 
 
