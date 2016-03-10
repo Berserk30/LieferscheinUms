@@ -101,7 +101,7 @@ public final class OperacionesBaseDatos {
         SQLiteDatabase db = baseDatos.getWritableDatabase();
 
         String whereClause = ContratoGestionUmsDb.Lieferschein.ID + "=?";
-        String whereArgs = {idLieferschein};
+        String[] whereArgs = {idLieferschein};
 
         int resultado = db.delete(Tablas.LIEFERSCHEIN, whereClause, whereArgs);
 
