@@ -1,5 +1,6 @@
 package at.ums.lieferscheinums.sqlite;
 
+import android.net.Uri;
 import android.provider.BaseColumns;
 
 /**
@@ -8,8 +9,9 @@ import android.provider.BaseColumns;
  */
 public class ContratoGestionUmsDb {
 
+
     interface ColumnasKunden {
-        String ID = BaseColumns._ID;;
+        String ID = BaseColumns._ID;
         String NAME = "name";
         String ADRESSE = "adresse";
         String ORT = "ort";
@@ -36,12 +38,66 @@ public class ContratoGestionUmsDb {
         String PRÄFIX = "präfix";
     }
 
+    public static final String AUTORIDAD_CONTENIDO = "at.ums.lieferscheinums";
+
+    public static final Uri URI_BASE = Uri.parse("content://" + AUTORIDAD_CONTENIDO);
+
+    private static final String RUTA_KUNDEN = "kunden";
+    private static final String RUTA_LIEFERSCHEIN = "lieferschein";
+    private static final String RUTA_MITARBEITER = "mitarbeiter";
+
+
+    /**
+     * Controlador de la tabla Kunden
+      */
+
     public static class Kunden implements ColumnasKunden{
-        //Metodos auxiliares
+
+        public static final Uri URI_CONTENIDO =
+                URI_BASE.buildUpon().appendPath(RUTA_KUNDEN).build();
+
+        public static final String MIME_RECURSO =
+                "vnd.android.cursor.item/vnd." + AUTORIDAD_CONTENIDO + "/" + RUTA_KUNDEN;
+
+        public static final String MIME_COLECCION =
+                "vnd.android.cursor.dir/vnd." + AUTORIDAD_CONTENIDO + "/" + RUTA_KUNDEN;
+
+
+        public static final String PARAMETRO_FILTRO = "filtro";
+        public static final String FILTRO_KUNDE = "kunde";
+
+        public static String obtenerKunde(Uri uri) {
+            return uri.getLastPathSegment();
+        }
+
+        /**
+         * Construye ua {@link Uri} para el {@link #ID} solicitado
+         */
+
+        public static Uri crearKunde(String id){
+            return URI_CONTENIDO.buildUpon().appendPath(id).build();
+        }
+
+        public static boolean tieneFiltro(Uri uri) {
+            return uri != null &&uri.getQueryParameter(PARAMETRO_FILTRO) != null;
+        }
+
     }
 
     public static class Lieferschein implements ColumnasLieferschein{
-        //Metodos auxiliares
+
+        public static final Uri URI_CONTENIDO =
+                URI_BASE.buildUpon().appendPath(RUTA_LIEFERSCHEIN).build();
+
+        public static String obtenerLieferschein(Uri uri) {
+            return uri.getLastPathSegment();
+        }
+
+        public static Uri crearLieferschein(String id){
+            return URI_CONTENIDO.buildUpon().appendPath(id).build();
+        }
+
+
     }
 
     public static class Mitarbeiter implements ColumnasMitarbeiter{

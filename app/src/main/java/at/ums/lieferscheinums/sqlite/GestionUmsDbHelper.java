@@ -1,5 +1,6 @@
 package at.ums.lieferscheinums.sqlite;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -91,6 +92,114 @@ public class GestionUmsDbHelper extends SQLiteOpenHelper {
                         "%s TEXT NOT NULL,%s TEXT NOT NULL)",
                 Tablas.MITARBEITER,
                 Mitarbeiter.ID, Mitarbeiter.NAME, Mitarbeiter.PRÄFIX));
+
+        //Registros de ejemplo
+
+        //Kunden
+            //01
+        ContentValues valoresKunden = new ContentValues();
+        valoresKunden.put(Kunden.ID, "0001");
+        valoresKunden.put(Kunden.NAME, "kun01");
+        valoresKunden.put(Kunden.ADRESSE, "ad01");
+        valoresKunden.put(Kunden.ORT, "ort01");
+        valoresKunden.put(Kunden.PLZ, "plz01");
+        valoresKunden.put(Kunden.TELEFON, "tlf01");
+        valoresKunden.put(Kunden.EMAIL, "email01");
+        db.insertOrThrow(Tablas.KUNDEN, null, valoresKunden);
+            //02
+        valoresKunden.put(Kunden.ID, "0002");
+        valoresKunden.put(Kunden.NAME, "kun02");
+        valoresKunden.put(Kunden.ADRESSE, "ad02");
+        valoresKunden.put(Kunden.ORT, "ort02");
+        valoresKunden.put(Kunden.PLZ, "plz02");
+        valoresKunden.put(Kunden.TELEFON, "tlf02");
+        valoresKunden.put(Kunden.EMAIL, "email02");
+        db.insertOrThrow(Tablas.KUNDEN, null, valoresKunden);
+            //03
+        valoresKunden.put(Kunden.ID, "0003");
+        valoresKunden.put(Kunden.NAME, "kun03");
+        valoresKunden.put(Kunden.ADRESSE, "ad03");
+        valoresKunden.put(Kunden.ORT, "ort03");
+        valoresKunden.put(Kunden.PLZ, "plz03");
+        valoresKunden.put(Kunden.TELEFON, "tlf03");
+        valoresKunden.put(Kunden.EMAIL, "email03");
+        db.insertOrThrow(Tablas.KUNDEN, null, valoresKunden);
+            //04
+        valoresKunden.put(Kunden.ID, "0004");
+        valoresKunden.put(Kunden.NAME, "kun04");
+        valoresKunden.put(Kunden.ADRESSE, "ad04");
+        valoresKunden.put(Kunden.ORT, "ort04");
+        valoresKunden.put(Kunden.PLZ, "plz04");
+        valoresKunden.put(Kunden.TELEFON, "tlf04");
+        valoresKunden.put(Kunden.EMAIL, "email04");
+        db.insertOrThrow(Tablas.KUNDEN, null, valoresKunden);
+
+        //Lieferschein
+            //01
+        ContentValues valoresLieferschein = new ContentValues();
+        valoresLieferschein.put(Lieferschein.ID, "0001");
+        valoresLieferschein.put(Lieferschein.DATUM, "01/01/2016");
+        valoresLieferschein.put(Lieferschein.ID_KUNDE, "0001");//
+        valoresLieferschein.put(Lieferschein.ID_MITARBEITER, "0001");
+        valoresLieferschein.put(Lieferschein.ARTIKEL, "Ejemplo de texto 1");
+        valoresLieferschein.put(Lieferschein.MENGE, "1111");
+        valoresLieferschein.put(Lieferschein.EH, "m3");
+        valoresLieferschein.put(Lieferschein.PHOTO, "photo0001");
+        valoresLieferschein.put(Lieferschein.SIGNATURE, "signature0001");
+        db.insertOrThrow(Tablas.LIEFERSCHEIN, null, valoresLieferschein);
+            //02
+        valoresLieferschein.put(Lieferschein.ID, "0002");
+        valoresLieferschein.put(Lieferschein.DATUM, "01/01/2016");
+        valoresLieferschein.put(Lieferschein.ID_KUNDE, "0001");
+        valoresLieferschein.put(Lieferschein.ID_MITARBEITER, "0001");
+        valoresLieferschein.put(Lieferschein.ARTIKEL, "Ejemplo de texto 2");
+        valoresLieferschein.put(Lieferschein.MENGE, "2222");
+        valoresLieferschein.put(Lieferschein.EH, "m3");
+        valoresLieferschein.put(Lieferschein.PHOTO, "photo0002");
+        valoresLieferschein.put(Lieferschein.SIGNATURE, "signature0002");
+        db.insertOrThrow(Tablas.LIEFERSCHEIN, null, valoresLieferschein);
+            //03
+        valoresLieferschein.put(Lieferschein.ID, "0003");
+        valoresLieferschein.put(Lieferschein.DATUM, "03/01/2016");
+        valoresLieferschein.put(Lieferschein.ID_KUNDE, "0001");
+        valoresLieferschein.put(Lieferschein.ID_MITARBEITER, "0001");
+        valoresLieferschein.put(Lieferschein.ARTIKEL, "Ejemplo de texto 3");
+        valoresLieferschein.put(Lieferschein.MENGE, "333");
+        valoresLieferschein.put(Lieferschein.EH, "m3");
+        valoresLieferschein.put(Lieferschein.PHOTO, "photo0003");
+        valoresLieferschein.put(Lieferschein.SIGNATURE, "signature0003");
+        db.insertOrThrow(Tablas.LIEFERSCHEIN, null, valoresLieferschein);
+            //04
+        valoresLieferschein.put(Lieferschein.ID, "0004");
+        valoresLieferschein.put(Lieferschein.DATUM, "04/01/2016");
+        valoresLieferschein.put(Lieferschein.ID_KUNDE, "0002");
+        valoresLieferschein.put(Lieferschein.ID_MITARBEITER, "0001");
+        valoresLieferschein.put(Lieferschein.ARTIKEL, "Ejemplo de texto 4");
+        valoresLieferschein.put(Lieferschein.MENGE, "4444");
+        valoresLieferschein.put(Lieferschein.EH, "m3");
+        valoresLieferschein.put(Lieferschein.PHOTO, "photo0004");
+        valoresLieferschein.put(Lieferschein.SIGNATURE, "signature0004");
+        db.insertOrThrow(Tablas.LIEFERSCHEIN, null, valoresLieferschein);
+            //05
+        valoresLieferschein.put(Lieferschein.ID, "0005");
+        valoresLieferschein.put(Lieferschein.DATUM, "05/01/2016");
+        valoresLieferschein.put(Lieferschein.ID_KUNDE, "0003");
+        valoresLieferschein.put(Lieferschein.ID_MITARBEITER, "0001");
+        valoresLieferschein.put(Lieferschein.ARTIKEL, "Ejemplo de texto 5");
+        valoresLieferschein.put(Lieferschein.MENGE, "5555");
+        valoresLieferschein.put(Lieferschein.EH, "Kg.");
+        valoresLieferschein.put(Lieferschein.PHOTO, "photo0005");
+        valoresLieferschein.put(Lieferschein.SIGNATURE, "signature0005");
+        db.insertOrThrow(Tablas.LIEFERSCHEIN, null, valoresLieferschein);
+
+        //Mitarbeiter
+        ContentValues valoresMitarbeiter = new ContentValues();
+        valoresMitarbeiter.put(Mitarbeiter.ID, "0001");
+        valoresMitarbeiter.put(Mitarbeiter.NAME, "Juan Jose Luna");
+        valoresMitarbeiter.put(Mitarbeiter.PRÄFIX, "JJL");
+        db.insertOrThrow(Tablas.MITARBEITER, null, valoresMitarbeiter);
+
+
     }
 
     @Override

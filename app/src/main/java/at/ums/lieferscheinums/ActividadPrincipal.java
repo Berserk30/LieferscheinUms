@@ -1,16 +1,24 @@
 package at.ums.lieferscheinums;
 
+import android.content.Intent;
 import android.database.DatabaseUtils;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
+import at.ums.lieferscheinums.ui.LieferscheinView;
 
 import at.ums.lieferscheinums.sqlite.OperacionesBaseDatos;
 
 public class ActividadPrincipal extends AppCompatActivity {
 
     OperacionesBaseDatos datos;
+
+    private Button mBotonAddLieferschein; //Para ejecutar el intent del boton addLieferschein
+
 
     public class TareaPruebaDatos extends AsyncTask<Void,Void,Void>{
         @Override
@@ -37,9 +45,28 @@ public class ActividadPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actividad_principal);
 
-        getApplicationContext().deleteDatabase("pedidos.db");
+        getApplicationContext().deleteDatabase("GestionUmsDb.db");
         datos = OperacionesBaseDatos.obtenerInstancia(getApplicationContext());
 
         new TareaPruebaDatos().execute();
+
+        mBotonAddLieferschein = (Button) findViewById(R.id.buttonAddLieferschein);
+        mBotonAddLieferschein.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                abreAddLieferschein();
+            }
+        });
+
+
     }
+
+
+    private void abreAddLieferschein(){
+        Intent intento = new Intent(this, LieferscheinView.class);
+        startActivity(intento);
+
+    }
+
+
 }
